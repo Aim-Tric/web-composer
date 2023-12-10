@@ -1,21 +1,9 @@
 <template>
-  <q-table class="my-sticky-header-table" :rows="tableModel.rows" selection="multiple"
+  <q-table class="my-sticky-header-table" :title="tableModel.title" :rows="tableModel.rows" selection="multiple"
     :columns="tableModel.displayColumns" row-key="name" flat bordered>
     <template v-slot:top="props">
-      <div class="row">
-          <div class="col-2 q-table__title">{{ tableModel.title }}</div>
-          <q-space />
-          <q-btn v-if="tableModel.setting.fullscreen" flat round dense
-            :icon="props.inFullscreen ? 'fullscreen_exit' : 'fullscreen'" @click="props.toggleFullscreen"
-            class="q-ml-md" />
-        </div>
-        <div>
-          <q-btn-group push>
-            <q-btn push label="First" icon="timeline" />
-            <q-btn push label="Second" icon="visibility" />
-            <q-btn push label="Third" icon="update" />
-          </q-btn-group>
-        </div>
+      <q-btn v-if="tableModel.setting.fullscreen" flat round dense
+        :icon="props.inFullscreen ? 'fullscreen_exit' : 'fullscreen'" @click="props.toggleFullscreen" class="q-ml-md" />
     </template>
   </q-table>
 </template>
@@ -23,7 +11,7 @@
 <script setup lang="ts">
 import { reactive } from 'vue'
 const tableModel = reactive({
-  title: '数据源管理',
+  title: '',
   columns: [],
   displayColumns: [],
   rows: [],
@@ -44,6 +32,11 @@ const tableModel = reactive({
       { label: '编辑', color: 'default', type: 'preset', auth: '{module|role|spec}:{typeValue}:name', allow: true, callback: '', order: 0 },
       { label: '删除', color: 'error', type: 'preset', auth: '{module|role|spec}:{typeValue}:name', allow: true, callback: '', order: 0 },
     ]
+    // {
+    //   create: {allow: true, auth: '{module|role|spec}:{typeValue}:name'},
+    //   update: {allow: true, auth: '{module|role|spec}:{typeValue}:name'},
+    //   delete: {allow: true, auth: '{module|role|spec}:{typeValue}:name'},
+    // }, // 数据管理按钮
   }
 })
 </script>
