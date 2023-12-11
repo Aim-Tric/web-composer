@@ -1,21 +1,23 @@
 <template>
   <q-table class="my-sticky-header-table" :rows="tableModel.rows" selection="multiple"
-    :columns="tableModel.displayColumns" row-key="name" flat bordered>
+    :card-style="{ backgroundColor: '#ffffff' }" :columns="tableModel.displayColumns" row-key="name" flat bordered>
     <template v-slot:top="props">
-      <div class="row">
-          <div class="col-2 q-table__title">{{ tableModel.title }}</div>
+      <div class="column">
+        <div class="row justify-between">
+          <div class="col-6 q-table__title">{{ tableModel.title }}</div>
           <q-space />
           <q-btn v-if="tableModel.setting.fullscreen" flat round dense
             :icon="props.inFullscreen ? 'fullscreen_exit' : 'fullscreen'" @click="props.toggleFullscreen"
             class="q-ml-md" />
         </div>
-        <div>
-          <q-btn-group push>
-            <q-btn push label="First" icon="timeline" />
-            <q-btn push label="Second" icon="visibility" />
-            <q-btn push label="Third" icon="update" />
+        <div class="row justify-between">
+          <q-btn-group flat>
+            <q-btn label="新增" icon="" />
+            <q-btn label="编辑" icon="" />
+            <q-btn label="删除" icon="" />
           </q-btn-group>
         </div>
+      </div>
     </template>
   </q-table>
 </template>
@@ -24,8 +26,60 @@
 import { reactive } from 'vue'
 const tableModel = reactive({
   title: '数据源管理',
-  columns: [],
-  displayColumns: [],
+  columns: [
+    {
+      name: 'id',
+      label: '编号',
+      field: 'id'
+    }, {
+      name: 'name',
+      label: '名称',
+      field: 'name'
+    }, {
+      name: 'ipaddr',
+      label: '数据库IP地址',
+      field: 'ipaddr'
+    }, {
+      name: 'username',
+      label: '用户名',
+      field: 'username'
+    }, {
+      name: 'password',
+      label: '密码',
+      field: 'password'
+    }, {
+      name: 'dialet',
+      label: '数据库方言',
+      field: 'dialet'
+    }
+  ],
+  displayColumns: [
+    {
+      name: 'id',
+      label: '编号',
+      field: 'id'
+    }, {
+      name: 'name',
+      label: '名称',
+      field: 'name'
+    }, {
+      name: 'ipaddr',
+      label: '数据库IP地址',
+      field: 'ipaddr'
+    }, {
+      name: 'username',
+      label: '用户名',
+      field: 'username'
+    }, {
+      name: 'password',
+      label: '密码',
+      field: 'password'
+    }, {
+      name: 'dialet',
+      label: '数据库方言',
+      field: 'dialet'
+    }
+  ],
   rows: [],
   setting: {
     // 0-关闭 1-开启单选 2-开启多选
@@ -53,11 +107,9 @@ const tableModel = reactive({
   /* height or max-height is important */
   height: 310px
 
-  .q-table__top,
-  .q-table__bottom,
-  thead tr:first-child th
-    /* bg color is important for th; just specify one */
-    background-color: #c1f4cd
+  .q-table__top > .column
+    width: 100%
+
 
   thead tr th
     position: sticky
