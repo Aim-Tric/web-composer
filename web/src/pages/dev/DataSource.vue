@@ -1,21 +1,27 @@
 <template>
-  <q-table class="my-sticky-header-table" :rows="tableModel.rows" selection="multiple"
+  <q-table class="web-composer-header-table" :rows="tableModel.rows" selection="multiple"
     :card-style="{ backgroundColor: '#ffffff' }" :columns="tableModel.displayColumns" row-key="name" flat bordered>
     <template v-slot:top="props">
       <div class="column">
         <div class="row justify-between">
-          <div class="col-6 q-table__title">{{ tableModel.title }}</div>
+          <div class="web-composer-header-table-title">数据源管理</div>
           <q-space />
+          <q-btn v-if="tableModel.setting.fullscreen" flat round dense icon="miscellaneous_services" class="q-ml-md" />
           <q-btn v-if="tableModel.setting.fullscreen" flat round dense
             :icon="props.inFullscreen ? 'fullscreen_exit' : 'fullscreen'" @click="props.toggleFullscreen"
             class="q-ml-md" />
         </div>
         <div class="row justify-between">
           <q-btn-group flat>
-            <q-btn label="新增" icon="" />
-            <q-btn label="编辑" icon="" />
-            <q-btn label="删除" icon="" />
+            <q-btn label="新增" icon="add" />
+            <q-btn label="编辑" icon="edit" />
+            <q-btn label="删除" icon="remove" />
           </q-btn-group>
+          <q-input borderless dense label="搜索" debounce="300" color="primary" v-model="undefined">
+            <template v-slot:append>
+              <q-btn flat round dense icon="search" />
+            </template>
+          </q-input>
         </div>
       </div>
     </template>
@@ -103,22 +109,11 @@ const tableModel = reactive({
 </script>
 
 <style lang="sass">
-.my-sticky-header-table
-  /* height or max-height is important */
-  height: 310px
-
+.web-composer-header-table
+  min-height: 310px
   .q-table__top > .column
     width: 100%
-
-
-  thead tr th
-    position: sticky
-    z-index: 1
-  thead tr:first-child th
-    top: 0
-
-  /* this is when the loading indicator appears */
-  &.q-table--loading thead tr:last-child th
-    /* height of all previous header rows */
-    top: 48px
+  .web-composer-header-table-title
+    font-size: 22px
+    font-weight: bold
 </style>
