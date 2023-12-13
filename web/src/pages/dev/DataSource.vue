@@ -4,7 +4,7 @@
     <template v-slot:top="props">
       <div class="column">
         <div class="row justify-between">
-          <div class="web-composer-header-table-title">数据源管理</div>
+          <div class="web-composer-header-table-title">{{ tableModel.title }}</div>
           <q-space />
           <q-btn v-if="tableModel.setting.fullscreen" flat round dense icon="miscellaneous_services" class="q-ml-md" />
           <q-btn v-if="tableModel.setting.fullscreen" flat round dense
