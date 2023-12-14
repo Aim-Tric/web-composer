@@ -1,4 +1,4 @@
-import { reactive, UnwrapNestedRefs } from 'vue'
+import { UnwrapNestedRefs } from 'vue'
 
 export interface ComposeDataTableColumn {
   name: string
@@ -58,54 +58,3 @@ export interface ComposeDataTableHook<T> {
   useColumnsSelection?: () => void
   useSelection?: () => void
 }
-
-const useComposeDataTable = <T>(option: ComposeDataTableOption<T>): ComposeDataTableHook<T> => {
-  const hook: ComposeDataTableHook<T> = {
-    tableModel: reactive({
-      title: option.title,
-      columns: option.columns,
-      displayColumns: option.displayColumns,
-      rows: option.rows
-    })
-  }
-
-  const setting = option.settings
-  if (setting.pagination) {
-    hook.usePagination = usePagination
-  }
-  if (setting.searchable) {
-    hook.usePagination = useSearch
-  }
-  if (setting.fullscreen) {
-    hook.useFullscreen = useFullscreen
-  }
-  if (setting.columnsSelection) {
-    hook.useColumnsSelection = useColumnsSelection
-  }
-  if (setting.selection) {
-    hook.useSelection = useSelection
-  }
-  return hook
-}
-
-const useSearch = () => {
-
-}
-
-const usePagination = () => {
-
-}
-
-const useFullscreen = () => {
-
-}
-
-const useColumnsSelection = () => {
-
-}
-
-const useSelection = () => {
-
-}
-
-export default useComposeDataTable

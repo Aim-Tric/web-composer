@@ -13,9 +13,9 @@
         </div>
         <div class="row justify-between">
           <q-btn-group flat>
-            <q-btn label="新增" icon="add" />
-            <q-btn label="编辑" icon="edit" />
-            <q-btn label="删除" icon="remove" />
+            <q-btn label="新增" icon="add" @click="opAdd" />
+            <q-btn label="编辑" icon="edit" @click="opEdit" />
+            <q-btn label="删除" icon="remove" @click="opDelete" />
           </q-btn-group>
           <q-input borderless dense label="搜索" debounce="300" color="primary" v-model="undefined">
             <template v-slot:append>
@@ -26,6 +26,15 @@
       </div>
     </template>
   </q-table>
+  <!-- 新增弹框 -->
+  <q-dialog v-model="dialog.showOpAdd">
+  </q-dialog>
+  <!-- 编辑弹框 -->
+  <q-dialog v-model="dialog.showOpEdit">
+  </q-dialog>
+  <!-- 删除弹框 -->
+  <q-dialog v-model="dialog.showOpDelete">
+  </q-dialog>
 </template>
 
 <script setup lang="ts">
@@ -106,6 +115,23 @@ const tableModel = reactive({
     ]
   }
 })
+
+const dialog = reactive({
+  showOpAdd: false,
+  showOpEdit: false,
+  showOpDelete: false
+})
+const opAdd = () => {
+  dialog.showOpAdd = true
+}
+
+const opEdit = () => {
+  dialog.showOpEdit = true
+}
+
+const opDelete = () => {
+  dialog.showOpDelete = true
+}
 </script>
 
 <style lang="sass">

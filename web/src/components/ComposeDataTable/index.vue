@@ -1,13 +1,13 @@
 <template>
-  <q-table class="web-composer-header-table" :rows="tableModel.rows" selection="multiple"
-    :card-style="{ backgroundColor: '#ffffff' }" :columns="tableModel.displayColumns" row-key="name" flat bordered>
+  <q-table class="web-composer-header-table" :rows="hook.tableModel.rows" selection="multiple"
+    :card-style="{ backgroundColor: '#ffffff' }" :columns="hook.tableModel.displayColumns" row-key="name" flat bordered>
     <template v-slot:top="props">
       <div class="column">
         <div class="row justify-between">
-          <div class="web-composer-header-table-title">{{ tableModel.title }}</div>
+          <div class="web-composer-header-table-title">{{ hook.tableModel.title }}</div>
           <q-space />
-          <q-btn v-if="tableModel.setting.fullscreen" flat round dense icon="miscellaneous_services" class="q-ml-md" />
-          <q-btn v-if="tableModel.setting.fullscreen" flat round dense
+          <q-btn v-if="option.settings.fullscreen" flat round dense icon="miscellaneous_services" class="q-ml-md" />
+          <q-btn v-if="option.settings.fullscreen" flat round dense
             :icon="props.inFullscreen ? 'fullscreen_exit' : 'fullscreen'" @click="props.toggleFullscreen"
             class="q-ml-md" />
         </div>
@@ -28,7 +28,44 @@
   </q-table>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" generic="T">
+import { reactive } from 'vue'
+import { ComposeDataTableOption, ComposeDataTableHook } from './index'
+
+const props = defineProps<{
+  option: ComposeDataTableOption<T>
+}>()
+
+const option = props.option
+const hook: ComposeDataTableHook<T> = {
+  tableModel: reactive({
+    title: option.title,
+    columns: option.columns,
+    displayColumns: option.displayColumns,
+    rows: option.rows
+  })
+}
+
+const useSearch = () => {
+
+}
+
+const usePagination = () => {
+
+}
+
+const useFullscreen = () => {
+
+}
+
+const useColumnsSelection = () => {
+
+}
+
+const useSelection = () => {
+
+}
+
 </script>
 
 <style lang="sass">
