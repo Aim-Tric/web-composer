@@ -2,6 +2,7 @@ import { UnwrapNestedRefs } from 'vue'
 
 export interface ComposeDataTableColumn {
   name: string
+  align: "left" | "right" | "center" | undefined
   label: string
   field: string
 }
