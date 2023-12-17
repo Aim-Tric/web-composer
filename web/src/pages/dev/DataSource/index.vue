@@ -14,7 +14,8 @@
         <div class="row justify-between">
           <q-btn-group flat>
             <q-btn label="新增" icon="add" @click="() => multiOpAddOrEdit(false)" />
-            <q-btn label="编辑" icon="edit" @click="() => multiOpAddOrEdit(true)" />
+            <q-btn v-if="tableModel.settings.multiEditMode" label="编辑" icon="edit"
+              @click="() => multiOpAddOrEdit(true)" />
             <q-btn label="删除" icon="remove" @click="opDelete" />
           </q-btn-group>
           <q-input borderless dense label="搜索" debounce="300" color="primary" v-model="undefined">
@@ -71,44 +72,26 @@
         <div class="text-h6">{{ dialog.value.id ? '编辑' : '新增' }}数据源</div>
       </q-card-section>
       <q-card-section>
-        <q-form @submit="addOrEdit">
-          <q-input v-model="dialog.value.name" label="名称" lazy-rules
-            :rules="[val => val && val.length > 0 || 'Please type something']" />
-          <q-input v-model="dialog.value.ipaddr" label="数据库IP地址" lazy-rules
-            :rules="[val => val && val.length > 0 || 'Please type something']" />
-          <q-input v-model="dialog.value.port" label="数据库端口" lazy-rules
-            :rules="[val => val && val.length > 0 || 'Please type something']" />
-          <q-input v-model="dialog.value.username" label="用户名" lazy-rules
-            :rules="[val => val && val.length > 0 || 'Please type something']" />
-          <q-input v-model="dialog.value.password" label="密码" lazy-rules
-            :rules="[val => val && val.length > 0 || 'Please type something']" />
-          <q-input v-model="dialog.value.dialet" label="数据库方言" lazy-rules
-            :rules="[val => val && val.length > 0 || 'Please type something']" />
-          <div>
-            <q-btn label="提交" type="submit" color="primary" />
-          </div>
-        </q-form>
+        <common-form :value="dialog.value" @submit="addOrEdit"></common-form>
       </q-card-section>
     </q-card>
   </q-dialog>
   <!-- 删除弹框 -->
   <q-dialog v-model="dialog.showOpDelete">
+    <q-card class="q-p-xs" :style="{ minWidth: '500px' }">
+      <q-card-section>
+      </q-card-section>
+    </q-card>
   </q-dialog>
 </template>
 
 <script setup lang="ts">
 import { reactive } from 'vue'
+import { DataSource } from '.';
 import { ComposeDataTableOption } from 'components/ComposeDataTable/index'
 
-interface DataSource {
-  id?: string
-  name?: string
-  ipaddr?: string
-  port?: string
-  username?: string
-  password?: string
-  dialet?: string
-}
+import CommonForm from './CommonForm.vue';
+
 
 // 表格数据配置区域
 const tableModel = reactive<ComposeDataTableOption<DataSource>>({
@@ -200,15 +183,11 @@ const tableModel = reactive<ComposeDataTableOption<DataSource>>({
     }
   ],
   settings: {
-    // 0-关闭 1-开启单选 2-开启多选
     selection: 2,
-    // 是否开启全屏按钮
+    multiEditMode: false,
     fullscreen: true,
-    // 是否允许表头字段选择
     columnsSelection: true,
-    // 是否开启分页
     pagination: true,
-    // 是否开启搜索
     searchable: true,
     operation: []
   }

@@ -11,11 +11,11 @@ const devRoutes: RouteRecordRaw[] = [
   },
   {
     path: '/dev/module',
-    component: () => import('pages/dev/Application.vue'),
+    component: () => import('pages/dev/Module.vue'),
   },
   {
     path: '/dev/datasource',
-    component: () => import('pages/dev/DataSource.vue'),
+    component: () => import('pages/dev/DataSource/index.vue'),
   },
   {
     path: '/dev/form',

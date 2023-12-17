@@ -26,6 +26,8 @@ export interface ComposeDataTableOperation {
 export interface ComposeDataTableSettings {
   // 0-关闭 1-开启单选 2-开启多选
   selection: ComposeDataTableSelectionSetting
+  // 是否开启多选模式
+  multiEditMode: boolean,
   // 是否开启全屏按钮
   fullscreen: boolean,
   // 是否允许表头字段选择
