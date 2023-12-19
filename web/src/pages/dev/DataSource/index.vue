@@ -57,7 +57,7 @@
           {{ col.value }}
         </q-td>
         <q-td auto-width>
-          <q-btn size="sm" color="primary" round dense @click="() => singleOpEdit(props.row)" icon="add"
+          <q-btn size="sm" color="primary" round dense @click="() => singleOpEdit(props.row)" icon="edit"
             class="q-mr-xs" />
           <q-btn size="sm" color="deep-orange" round dense @click="() => singleOpRemove(props.row)" icon="remove"
             class="q-mr-xs" />
@@ -77,10 +77,18 @@
     </q-card>
   </q-dialog>
   <!-- 删除弹框 -->
-  <q-dialog v-model="dialog.showOpDelete">
+  <q-dialog v-model="dialog.showOpDelete" persistent>
     <q-card class="q-p-xs" :style="{ minWidth: '500px' }">
       <q-card-section>
+        <div class="text-h6">消息提示</div>
       </q-card-section>
+      <q-card-section>
+        您正在删除{{ dialog.value.name }}，是否确认删除？
+      </q-card-section>
+      <q-card-actions align="right" class="text-primary">
+        <q-btn flat label="确定" v-close-popup />
+        <q-btn flat label="取消" v-close-popup />
+      </q-card-actions>
     </q-card>
   </q-dialog>
 </template>
@@ -221,11 +229,11 @@ const addOrEdit = () => { }
 
 // 删除操作
 const opDelete = () => {
-  dialog.showOpDelete = true
 }
 
 const singleOpRemove = (value: DataSource) => {
-
+  dialog.value = value
+  dialog.showOpDelete = true
 }
 </script>
 
