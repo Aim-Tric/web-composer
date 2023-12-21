@@ -1,12 +1,11 @@
 package cn.codebro.server;
 
-import cn.codebro.server.application.server.ServerFacade;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.core.env.ConfigurableEnvironment;
 
 @SpringBootApplication
 public class ComposerServer {
@@ -25,15 +24,15 @@ public class ComposerServer {
         logger.info("========= Composer Server启动成功 =========");
     }
 
-    public void printServerBaseInfo() {
-        ServerFacade serverFacade = this.context.getBean(ServerFacade.class);
-        
+    public void printServerInfo() {
+        ConfigurableEnvironment environment = this.context.getEnvironment();
+
     }
 
     public static void main(String[] args) {
         ComposerServer composerServer = new ComposerServer();
         composerServer.startComposerServer(args);
-        composerServer.printServerBaseInfo();
+        composerServer.printServerInfo();
     }
 
 

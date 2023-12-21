@@ -174,10 +174,10 @@ const tableModel = reactive<ComposeDataTableOption<DataSource>>({
       align: 'center',
       field: 'password'
     }, {
-      name: 'dialet',
+      name: 'dialect',
       label: '数据库方言',
       align: 'center',
-      field: 'dialet'
+      field: 'dialect'
     }
   ],
   rows: [
@@ -187,7 +187,7 @@ const tableModel = reactive<ComposeDataTableOption<DataSource>>({
       ipaddr: 'localhost',
       username: 'root',
       password: 'root',
-      dialet: 'mysql'
+      dialect: 'mysql'
     }
   ],
   settings: {

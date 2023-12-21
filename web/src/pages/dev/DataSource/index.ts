@@ -8,7 +8,7 @@ export interface DataSource {
   port?: string
   username?: string
   password?: string
-  dialet?: string
+  dialect?: string
 }
 
 
