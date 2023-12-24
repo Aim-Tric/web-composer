@@ -1,5 +1,6 @@
 package cn.codebro.server;
 
+import cn.codebro.server.application.server.SpringWebServerFacade;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -25,8 +26,9 @@ public class ComposerServer {
     }
 
     public void printServerInfo() {
+        SpringWebServerFacade springWebServerFacade = this.context.getBean(SpringWebServerFacade.class);
         ConfigurableEnvironment environment = this.context.getEnvironment();
-
+        springWebServerFacade.printWebServerInfo(environment);
     }
 
     public static void main(String[] args) {
