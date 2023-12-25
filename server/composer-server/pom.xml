@@ -17,6 +17,7 @@
     <properties>
         <java.version>17</java.version>
         <sqltoy-starter.version>5.3.60</sqltoy-starter.version>
+        <hutool.version>5.8.16</hutool.version>
     </properties>
 
     <dependencies>
@@ -37,6 +38,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
+        </dependency>
+        <!-- Hutool工具 -->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>${hutool.version}</version>
         </dependency>
         <!-- SqlToy ORM框架 -->
         <dependency>
