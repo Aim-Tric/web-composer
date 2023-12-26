@@ -1,6 +1,6 @@
-package cn.codebro.server.infrastructure.external;
+package cn.codebro.server.infrastructure.external.response;
 
-import cn.codebro.server.module.ApiResponse;
+import cn.codebro.server.domain.ApiResponse;
 import cn.hutool.core.util.ObjectUtil;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 @RestControllerAdvice
-public class ServerResponseAware implements ResponseBodyAdvice<ApiResponse> {
+public class ServerResponseAware implements ResponseBodyAdvice<Object> {
 
 
     @ExceptionHandler(Exception.class)
@@ -27,7 +27,12 @@ public class ServerResponseAware implements ResponseBodyAdvice<ApiResponse> {
     }
 
     @Override
-    public ApiResponse beforeBodyWrite(ApiResponse body, MethodParameter returnType, MediaType selectedContentType, Class<? extends HttpMessageConverter<?>> selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {
+    public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType,
+                                  Class<? extends HttpMessageConverter<?>> selectedConverterType,
+                                  ServerHttpRequest request, ServerHttpResponse response) {
+        if (body instanceof ApiResponse) {
+            return body;
+        }
 
         return null;
     }

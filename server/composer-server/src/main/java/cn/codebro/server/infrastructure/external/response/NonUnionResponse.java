@@ -1,4 +1,4 @@
-package cn.codebro.server.infrastructure.external;
+package cn.codebro.server.infrastructure.external.response;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
