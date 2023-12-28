@@ -73,6 +73,10 @@ public class ApiResponse implements Serializable {
     }
 
     public enum ApiResponseEnums {
+        SUCCESS(200, "成功"),
+        FAILURE(400, "失败"),
+        NOT_FOUND(404, "未找到"),
+        ERROR_IN_PROC(500, "执行过程异常"),
 
         ;
         private final Integer code;

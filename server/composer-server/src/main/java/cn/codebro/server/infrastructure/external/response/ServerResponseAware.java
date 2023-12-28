@@ -17,7 +17,7 @@ public class ServerResponseAware implements ResponseBodyAdvice<Object> {
 
     @ExceptionHandler(Exception.class)
     public ApiResponse exceptionHandler(Exception e) {
-        return null;
+        return new ApiResponse.ApiResponseBuilder(ApiResponse.ApiResponseEnums.FAILURE).build();
     }
 
     @Override
@@ -33,7 +33,6 @@ public class ServerResponseAware implements ResponseBodyAdvice<Object> {
         if (body instanceof ApiResponse) {
             return body;
         }
-
-        return null;
+        return new ApiResponse.ApiResponseBuilder(ApiResponse.ApiResponseEnums.SUCCESS, body).build();
     }
 }
