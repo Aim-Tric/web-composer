@@ -1,4 +1,4 @@
-package cn.codebro.server.domain;
+package cn.codebro.server.web;
 
 import java.io.Serializable;
 

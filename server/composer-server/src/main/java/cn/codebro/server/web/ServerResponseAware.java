@@ -1,6 +1,5 @@
-package cn.codebro.server.infrastructure.external.response;
+package cn.codebro.server.web;
 
-import cn.codebro.server.domain.ApiResponse;
 import cn.hutool.core.util.ObjectUtil;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
