@@ -1,6 +1,6 @@
 package cn.codebro.server;
 
-import cn.codebro.server.web.SpringWebServerFacade;
+import cn.codebro.server.module.web.SpringWebServerFacade;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;

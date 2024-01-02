@@ -1,4 +1,4 @@
-package cn.codebro.server.web;
+package cn.codebro.server.module.web;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

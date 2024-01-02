@@ -1,6 +1,7 @@
-package cn.codebro.server.datasource;
+package cn.codebro.server.module.datasource;
 
-import cn.codebro.server.web.PageRequest;
+import cn.codebro.server.core.domain.Pager;
+import cn.codebro.server.module.web.PageRequest;
 import org.sagacity.sqltoy.model.Page;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +16,7 @@ public class DataSourceController {
     }
 
     @PostMapping("/page")
-    public Page<DataSourceEntity> page(@RequestBody PageRequest<DataSourceEntity> pageRequest) {
+    public Pager<DataSourceEntity> page(@RequestBody PageRequest<DataSourceEntity> pageRequest) {
         return dataSourceService.page(pageRequest.getPage(), pageRequest.getSize(), pageRequest.getCondition());
     }
 

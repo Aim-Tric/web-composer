@@ -1,4 +1,4 @@
-package cn.codebro.server.datasource;
+package cn.codebro.server.module.datasource;
 
 import org.sagacity.sqltoy.config.annotation.Column;
 import org.sagacity.sqltoy.config.annotation.Entity;

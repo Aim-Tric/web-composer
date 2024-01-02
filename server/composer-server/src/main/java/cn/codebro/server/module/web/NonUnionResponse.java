@@ -1,4 +1,4 @@
-package cn.codebro.server.web;
+package cn.codebro.server.module.web;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

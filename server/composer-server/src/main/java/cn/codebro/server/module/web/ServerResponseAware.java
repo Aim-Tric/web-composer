@@ -1,4 +1,4 @@
-package cn.codebro.server.web;
+package cn.codebro.server.module.web;
 
 import cn.hutool.core.util.ObjectUtil;
 import org.springframework.core.MethodParameter;
