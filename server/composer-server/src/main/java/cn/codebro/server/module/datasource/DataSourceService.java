@@ -18,7 +18,7 @@ public class DataSourceService {
 
     public Pager<DataSourceEntity> page(Integer page, Integer size, DataSourceEntity condition) {
         if (condition == null) {
-            return new Pager<>(allDataSources).getPager(page, size);
+            return new Pager<>(allDataSources).separatePager(page, size);
         }
         return null;
     }
