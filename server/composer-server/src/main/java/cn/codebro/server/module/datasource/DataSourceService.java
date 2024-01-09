@@ -13,30 +13,32 @@ public class DataSourceService {
 
     public DataSourceService(DataSourceRepository dataSourceRepository) {
         this.dataSourceRepository = dataSourceRepository;
-        allDataSources = dataSourceRepository.getAllDataSources();
+        allDataSources = dataSourceRepository.getAll(new DataSourceEntity());
     }
 
     public Pager<DataSourceEntity> page(Integer page, Integer size, DataSourceEntity condition) {
         if (condition == null) {
             return new Pager<>(allDataSources).separatePager(page, size);
         }
-        return null;
+        return new Pager<>(dataSourceRepository.getAll(condition)).separatePager(page, size);
     }
 
     public DataSourceEntity getById(String id) {
-        return null;
+        DataSourceEntity dataSourceEntity = new DataSourceEntity();
+        dataSourceEntity.setId(id);
+        return dataSourceRepository.get(dataSourceEntity);
     }
 
     public boolean insert(DataSourceEntity dataSourceEntity) {
-        return dataSourceRepository.insertDataSource(dataSourceEntity);
+        return dataSourceRepository.insert(dataSourceEntity);
     }
 
     public boolean update(DataSourceEntity dataSourceEntity) {
-        return dataSourceRepository.updateDataSource(dataSourceEntity);
+        return dataSourceRepository.update(dataSourceEntity);
     }
 
     public boolean delete(String id) {
-        return dataSourceRepository.deleteDataSourceById(id);
+        return dataSourceRepository.deleteById(id);
     }
 
 }

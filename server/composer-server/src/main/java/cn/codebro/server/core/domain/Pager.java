@@ -74,4 +74,12 @@ public class Pager<T> implements Serializable {
     public Integer getTotal() {
         return total;
     }
+
+    public Integer getNextPageNo() {
+        return nextPageNo;
+    }
+
+    public Integer getPrevPageNo() {
+        return prevPageNo;
+    }
 }

@@ -2,12 +2,9 @@
 <sqltoy xmlns="http://www.sagframe.com/schema/sqltoy"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.sagframe.com/schema/sqltoy http://www.sagframe.com/schema/sqltoy/sqltoy.xsd">
-    <sql id="ds_getAll">
+    <sql id="auth_getAll">
         <![CDATA[
-            SELECT * FROM c_data_source
-            WHERE
-            #[ AND ipaddr LIKE :ipaddr ]
-            #[ AND dialect = :dialect ]
+            SELECT * FROM c_authorization
         ]]>
     </sql>
 </sqltoy>
