@@ -1,5 +1,6 @@
 package cn.codebro.server.module.authorization;
 
+import cn.codebro.server.module.authorization.entity.AuthorizationEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,6 +21,46 @@ public class AuthorizationService {
         this.authorizationRepository = authorizationRepository;
     }
 
+    /* *************************************************
+     **
+     ** 下面是访问异常告警功能
+     **
+     * *************************************************/
+    public boolean scanIllegalAccess() {
+
+        return false;
+    }
+
+    public boolean noticeIllegalAccess() {
+
+        return false;
+    }
+
+
+    /* *************************************************
+     **
+     ** 下面是访问日志功能
+     **
+     * *************************************************/
+
+    /**
+     * 根据访问的模块、页面、操作信息
+     *
+     * @return 新增数据结果
+     */
+    public boolean insertAccessLog() {
+        return false;
+    }
+
+    /**
+     * 分页获取访问日志记录
+     *
+     * @return 访问日志列表
+     */
+    public List<Object> getAccessLogByPage() {
+
+        return null;
+    }
 
 
     /* *************************************************

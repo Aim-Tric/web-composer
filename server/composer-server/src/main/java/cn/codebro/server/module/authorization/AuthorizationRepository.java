@@ -1,5 +1,6 @@
 package cn.codebro.server.module.authorization;
 
+import cn.codebro.server.module.authorization.entity.AuthorizationEntity;
 import org.sagacity.sqltoy.dao.SqlToyLazyDao;
 import org.springframework.stereotype.Repository;
 

@@ -1,4 +1,4 @@
-package cn.codebro.server.module.authorization;
+package cn.codebro.server.module.authorization.entity;
 
 import org.sagacity.sqltoy.config.annotation.Entity;
 
